@@ -8,9 +8,9 @@ before_script:
   git clone --depth=1 https://github.com/Kickball/awesome-selfhosted.git
   
 script:
-  -node awesome-selfhosted/test.js README.md
-  -awesome_bot -f awesome-selfhosted/non-free.md --allow-redirect || (exit 0)
-  -mkdir out 
+  - node awesome-selfhosted/test.js README.md
+  - awesome_bot -f awesome-selfhosted/non-free.md --allow-redirect || (exit 0)
+  - mkdir out && cp awesome-selfhosted/ab-results-awesome-selfhosted-non-free.md-markdown-table.json .
 
 deploy:
   provider: pages
