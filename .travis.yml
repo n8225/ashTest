@@ -12,7 +12,7 @@ script:
   - awesome_bot -f awesome-selfhosted/README.md,awesome-selfhosted/non-free.md --allow-redirect --allow 403,429 || (exit 0)
   - mkdir out
   - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' > out/non-free_results.md
-  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' > out/free_results.md
+  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-README.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' > out/free_results.md
 deploy:
   provider: pages
   skip_cleanup: true
