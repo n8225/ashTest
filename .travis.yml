@@ -10,7 +10,7 @@ before_script:
 script:
   - node awesome-selfhosted/test.js awesome-selfhosted/README.md
   - awesome_bot -f awesome-selfhosted/non-free.md --allow-redirect || (exit 0)
-  - mkdir out && grep -Pos "(####\s.*)\"" ab-results-awesome-selfhosted-non-free.md-markdown-table.json >> out/results.md
+  - mkdir out && grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' > out/results.md
 
 deploy:
   provider: pages
