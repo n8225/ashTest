@@ -1,0 +1,25 @@
+language: ruby
+rvm: 2.2
+
+before_install:
+  gem install awesome_bot  
+
+before_script:
+  git clone --depth=1 https://github.com/Kickball/awesome-selfhosted.git
+  
+script:
+  node awesome-selfhosted/test.js README.md
+  awesome_bot -f awesome-selfhosted/non-free.md --allow-redirect || (exit 0)
+  -mkdir out 
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: out
+  target_branch: results-$(date +%Y%m%d-%H%M)
+  on:
+    branch: master
+    
+notifications:
+  email: false
