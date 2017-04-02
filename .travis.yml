@@ -11,8 +11,8 @@ script:
   - node awesome-selfhosted/test.js awesome-selfhosted/README.md
   - awesome_bot -f awesome-selfhosted/README.md,awesome-selfhosted/non-free.md --allow-ssl --allow-dupe --allow-redirect --allow 403,429 || (exit 0)
   - mkdir out
-  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' | sed 's/\([[:space:]]Line\)/| |\1/g' free_results.md | sed 's/\(| ---: |\)/| :----: \1/g' | sed 's/\([[:digit:]]\+[[:space:]]|\)/| \<ul\>\<li\> [ ] \<\/li\>\<\/ul\> | \1/g' > out/non-free_results.md
-  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-README.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' | sed 's/\([[:space:]]Line\)/| |\1/g' free_results.md | sed 's/\(| ---: |\)/| :----: \1/g' | sed 's/\([[:digit:]]\+[[:space:]]|\)/| \<ul\>\<li\> [ ] \<\/li\>\<\/ul\> | \1/g' > out/free_results.md
+  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' | sed 's/\([[:space:]]Line\)/| |\1/g' | sed 's/\(| ---: |\)/| :----: \1/g' | sed 's/\([[:digit:]]\+[[:space:]]|\)/| \<ul\>\<li\> [ ] \<\/li\>\<\/ul\> | \1/g' > out/non-free_results.md
+  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-README.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' | sed 's/\([[:space:]]Line\)/| |\1/g' | sed 's/\(| ---: |\)/| :----: \1/g' | sed 's/\([[:digit:]]\+[[:space:]]|\)/| \<ul\>\<li\> [ ] \<\/li\>\<\/ul\> | \1/g' > out/free_results.md
 deploy:
   provider: pages
   skip_cleanup: true
