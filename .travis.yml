@@ -12,9 +12,9 @@ script:
   - awesome_bot -f awesome-selfhosted/README.md,awesome-selfhosted/non-free.md --allow-ssl --allow-dupe --allow-redirect --allow 403,429 || (exit 0)
   - mkdir out
   - echo "README.md" >> out/results.md
-  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-README.md-markdown-table.json | sed -e '1,$s/\\n/\n/g' | sed '/\(^|\|^[[:space:]]\)/d' | sed -e 's/^\([[:digit:]]\+\(.*\)$\)/- [  ] \1/g' >> out/results.md
+  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-README.md-markdown-table.json | sed -e '1,$s/\\n/\n/g' | sed '/\(^|\|^[[:space:]]\)/d' | sed -e 's/^\([[:digit:]]\+\(.*\)$\)/- [ ] \1/g' >> out/results.md
   - echo "non-free.md" >> out/results.md  
-  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | sed -e '1,$s/\\n/\n/g' | sed '/\(^|\|^[[:space:]]\)/d' | sed -e 's/^\([[:digit:]]\+\(.*\)$\)/- [  ] \1/g' >> out/results.md
+  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | sed -e '1,$s/\\n/\n/g' | sed '/\(^|\|^[[:space:]]\)/d' | sed -e 's/^\([[:digit:]]\+\(.*\)$\)/- [ ] \1/g' >> out/results.md
   
 deploy:
   provider: pages
