@@ -9,10 +9,10 @@ before_script:
   
 script:
   - node awesome-selfhosted/test.js awesome-selfhosted/README.md
-  - awesome_bot -f awesome-selfhosted/non-free.md --allow-ssl --allow-dupe --allow-redirect --allow 403,429 || (exit 0)
+  - awesome_bot -f awesome-selfhosted/README.md,awesome-selfhosted/non-free.md --allow-ssl --allow-dupe --allow-redirect --allow 403,429 || (exit 0)
   - mkdir out
-  - cp ab-results-awesome-selfhosted-non-free.md-markdown-table.json out/.
-  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | sed -e '1,$s/\\n/\n/g' | sed '/\(^|\|^[[:space:]]\)/d' | sed -e 's/^\([[:digit:]]\+\(.*\)$\)/- [ ] Line:`\1`/g' -e 's/[[:space:]]|[[:space:]]/` Status:`/1' -e 's/[[:space:]]|[[:space:]]/` Link:`/1' > out/non-free_results.md
+  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-README.md-markdown-table.json | sed -e '1,$s/\\n/\n/g' | sed '/\(^|\|^[[:space:]]\)/d' | sed -e 's/^\([[:digit:]]\+\(.*\)$\)/- [ ] Line:`\1`/g' -e 's/[[:space:]]|[[:space:]]/` Status:`/1' -e 's/[[:space:]]|[[:space:]]/` Link:`/1' > out/results.md 
+  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | sed -e '1,$s/\\n/\n/g' | sed '/\(^|\|^[[:space:]]\)/d' | sed -e 's/^\([[:digit:]]\+\(.*\)$\)/- [ ] Line:`\1`/g' -e 's/[[:space:]]|[[:space:]]/` Status:`/1' -e 's/[[:space:]]|[[:space:]]/` Link:`/1' >> out/results.md
   
 deploy:
   provider: pages
