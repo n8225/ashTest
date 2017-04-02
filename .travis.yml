@@ -12,7 +12,7 @@ script:
   - awesome_bot -f awesome-selfhosted/non-free.md --allow-ssl --allow-dupe --allow-redirect --allow 403,429 || (exit 0)
   - mkdir out
   - cp ab-results-awesome-selfhosted-non-free.md-markdown-table.json out/.
-  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' | sed 's/\([[:space:]]Line\)/||\1/g' | sed 's/\(|[[:space:]]---:[[:space:]]|\)/|:----:\1/g' | sed 's/\([[:digit:]]\+[[:space:]]|\)/|\<ul\>\<li\>[]\<\/li\>\<\/ul\>|\1/g' > out/non-free_results.md
+  - grep -Pos "####\s.*(?=\")" ab-results-awesome-selfhosted-non-free.md-markdown-table.json | awk '{gsub(/\\n/,"\n")}1' | sed 's/\([[:space:]]Line\)/||\1/g' | sed 's/\(|[[:space:]]---:[[:space:]]|\)/|:----:\1/g' | sed 's/\([[:digit:]]\+[[:space:]]|\)/|\<ul\>\<li\> [ ] \<\/li\>\<\/ul\>|\1/g' > out/non-free_results.md
   
 deploy:
   provider: pages
